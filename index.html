@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  height:100vh;width:100vw;
+  overflow:hidden;
+  font-family:'Comic Sans MS', cursive;
+  background: linear-gradient(to top, #1b1b3a, #3a1c71);
+  display:flex;justify-content:center;align-items:center;
+  color:white;
+  transition: background 0.6s;
+}
+#container{
+  height:100vh;width:100vw;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  padding:20px;
+}
+#text{font-size:1.5rem;line-height:1.6;min-height:180px;}
+#buttons{margin-top:25px;}
+button{
+  padding:12px 22px;font-size:1rem;
+  border-radius:25px;border:none;margin:10px;
+  cursor:pointer;
+}
+.yes{background:#ff4d6d;color:white;}
+.no{background:#555;color:white;}
+.hug-gif{width:260px;margin:15px 0;}
+@media(max-width:600px){.hug-gif{width:320px;}}
+.heart{font-size:3em;animation:beat 1s infinite;}
+@keyframes beat{0%,50%,100%{transform:scale(1);}25%,75%{transform:scale(1.2);}}
+.star{position:absolute;bottom:-20px;font-size:18px;animation:floatUp linear infinite;opacity:0.8;}
+@keyframes floatUp{to{transform:translateY(-120vh);}}
+@keyframes fall{to{transform:translateY(120vh);opacity:0;}}
+.glow-text{font-size:2.3em;font-weight:bold;color:#ffd36a;text-shadow:0 0 15px rgba(255,211,106,0.7),0 0 30px rgba(255,211,106,0.9);animation:glow 2s infinite;}
+@keyframes glow{0%{text-shadow:0 0 10px rgba(255,211,106,0.6);}50%{text-shadow:0 0 40px rgba(255,211,106,1);}100%{text-shadow:0 0 10px rgba(255,211,106,0.6);}}
+</style>
+</head>
+<body>
+<div id="container">
+  <h1>Moii Sweet Khadus…💗</h1>
+  <div id="text"></div>
+  <div id="buttons"></div>
+</div>
+
+<script>
+const textDiv=document.getElementById("text");
+const btns=document.getElementById("buttons");
+
+function noText(){
+  textDiv.innerHTML="Aap apni Ghewar Rani jii ko mna kaise kar sakte ho 😭💖";
+  btns.innerHTML="";
+}
+
+function thankYou(nextStep,message){
+  textDiv.innerHTML=`
+    <img src="https://media.giphy.com/media/l4FGpP4lxGGgK5CBW/giphy.gif" class="hug-gif"><br>
+    ${message}
+  `;
+  btns.innerHTML=`<button class="yes" onclick="${nextStep}()">Aage badho 💫</button>`;
+}
+
+// Step 1: Intro
+function step1(){
+  textDiv.innerHTML="Thodi si nervous hoon but 🙈<br><br>Aapki ghewar raniji aapse kuch kehna chahti hai khadus...👉👈💜";
+  btns.innerHTML=`
+    <button class="yes" onclick="thankYou('step2','Mujhe pta tha aap apni Ghewar Rani ji ko mana nahi kar sakte 😁<br>I love you so much Khadus 💖')">Tell me 💫</button>
+    <button class="no" onclick="noText()">No 🙃</button>
+  `;
+}
+
+// Step 2: Important question
+function step2(){
+  textDiv.innerHTML="So here is the important question… 💭💗";
+  btns.innerHTML=`
+    <button class="yes" onclick="step3()">Tell me 💫</button>
+    <button class="no" onclick="noText()">No 🙃</button>
+  `;
+}
+
+// Step 3: Will you be my Valentine
+function step3(){
+  textDiv.innerHTML="Will you be my Valentine? 🌟💖";
+  btns.innerHTML=`
+    <button class="yes" onclick="thankYouValentine()">YES 💜</button>
+    <button class="no" onclick="noText()">No 😤</button>
+  `;
+}
+
+function thankYouValentine(){
+  textDiv.innerHTML=`
+    <img src="https://media.giphy.com/media/l4FGpP4lxGGgK5CBW/giphy.gif" class="hug-gif"><br>
+    Mujhe pta tha aap HAA hi bologe 😁<br><b>Mere Motichur ke Laddu 💖</b>
+  `;
+  btns.innerHTML=`<button class="yes" onclick="specialMessage()">Aage badho 💫</button>`;
+}
+
+// Step 4: Special message
+function specialMessage(){
+  document.body.style.background="#b30000";
+  textDiv.innerHTML=`
+    💌 A special message for my Khadus 💌<br><br>
+    Dekha pta tha aapki Ghewar Rani ji ko<br>
+    ki aap ready hi ho 🥹💗<br><br>
+    Bas hamesha aise hi khush rehna ✨<br>
+    aur ek <b>bahut bade successful insaan</b> banna 🌟<br><br>
+    Just know ki aapki Ghewar Rani ji<br>
+    <b>hamesha aapke dil mein hai aur aapke saath hai</b> ❤️<br><br>
+    And in last…<br>
+    I just wanna say 💞<br><br>
+    <b>I Love You So Much<br>My Marathi Mulga 🥰</b>
+  `;
+  btns.innerHTML=`<button class="yes" onclick="finalScene()">Aage badho 💫</button>`;
+}
+
+// Step 5: Final screen
+function finalScene(){
+  textDiv.innerHTML=`
+    <div class="heart">❤️</div><br>
+    I love you 💖<br><br>
+    <div class="glow-text">I'M WAITING FOR UHHH ✨🥹</div><br><br>
+    <div style="font-size:1.3rem; font-weight:bold; color:#ffd36a;">
+      HAPPY VALENTINE'S DAY MY SWEET KHADUS 💖
+    </div>
+  `;
+  btns.innerHTML="";
+  emojiRain();
+}
+
+// Emoji rain
+function emojiRain(){
+  const emojis=["💖","✨","🥹","🌟","💜"];
+  for(let i=0;i<50;i++){
+    let e=document.createElement("div");
+    e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.position="fixed";
+    e.style.left=Math.random()*100+"vw";
+    e.style.top="-20px";
+    e.style.fontSize="22px";
+    e.style.animation="fall 3s linear";
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),3000);
+  }
+}
+
+/* Stars */
+for(let s=0;s<30;s++){
+  let star=document.createElement("div");
+  star.className="star";
+  star.innerHTML="🌟";
+  star.style.left=Math.random()*100+"vw";
+  star.style.animationDuration=(Math.random()*6+6)+"s";
+  document.body.appendChild(star);
+}
+
+step1();
+</script>
+</body>
+</html>
